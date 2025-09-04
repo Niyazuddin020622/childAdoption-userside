@@ -13,7 +13,7 @@ const Register = () => {
     email: "",
     password: "",
     mobile: "",
-    reason: "",
+    region: "",
     agreeTerms: false,
   });
 
@@ -169,10 +169,10 @@ const Register = () => {
           >
             <h2 className="text-xl font-semibold mb-4">Adoption Reason</h2>
             <textarea
-              name="reason"
+              name="region"
               placeholder="Why do you want to adopt?"
               className="w-full p-2 border rounded mb-3"
-              value={formData.reason}
+              value={formData.region}
               onChange={handleChange}
               required
             />
