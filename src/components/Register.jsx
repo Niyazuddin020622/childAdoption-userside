@@ -31,10 +31,11 @@ const Register = () => {
     if (step > 1) setStep(step - 1);
   };
 
+  const API_URL = import.meta.env.VITE_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/register", formData); // ✅ API call
+      const response = await axios.post(`${API_URL}/api/register`, formData); // ✅ API call
       setMessage(response.data.message || "Registration Successful!");
       console.log("User Registered:", response.data);
     } catch (error) {

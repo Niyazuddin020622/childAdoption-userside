@@ -3,10 +3,11 @@ import { io } from "socket.io-client";
 
 const token = localStorage.getItem("adminToken");
 
-const socket = io("http://localhost:3000", {
-  auth: {
-    token,
-  },
+// ✅ Render pe deployed backend URL use karo
+const backendURL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
+const socket = io(backendURL, {
+  auth: { token },
   autoConnect: false, // Optional: connect manually later if needed
 });
 
