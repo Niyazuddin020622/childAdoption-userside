@@ -12,15 +12,13 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const API_URL = import.meta.env.VITE_API_URL;
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        "/api/login",
-        formData
-      );
+      const response = await axios.post(`${API_URL}/api/login`, formData);
 
       if (response.data && response.data.user) {
         localStorage.setItem("user", JSON.stringify(response.data.user));
