@@ -6,9 +6,9 @@ const AvailableChildren = () => {
   const [children, setChildren] = useState([]);
   const [filteredChildren, setFilteredChildren] = useState([]);
   const navigate = useNavigate();
-
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
-    fetch("/api/children")
+    fetch(`${API_URL}/api/children`)
       .then((res) => res.json())
       .then((data) => {
         setChildren(data);
