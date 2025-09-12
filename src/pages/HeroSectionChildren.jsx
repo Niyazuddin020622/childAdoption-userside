@@ -5,10 +5,10 @@ function HeroSectionChildren({ setFilteredChildren }) {
   const [gender, setGender] = useState("");
   const [ageGroup, setAgeGroup] = useState("");
   const [location, setLocation] = useState("");
-
+const API_URL = import.meta.env.VITE_API_URL;
   const handleSearch = async () => {
     try {
-      let query = `/api/children?`;
+      let query = `${API_URL}/api/children?`;
       const params = [];
 
       if (gender) params.push(`gender=${encodeURIComponent(gender)}`);

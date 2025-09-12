@@ -26,11 +26,11 @@ const ProfileSection = ({ user, setUser }) => {
     const { name, value } = e.target;
     setEditedUser((prev) => ({ ...prev, [name]: value }));
   };
-
+const API_URL = import.meta.env.VITE_API_URL;
   const handleSaveChanges = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/users/${user._id}`, {
+      const response = await fetch(`${API_URL}/api/users/${user._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editedUser),

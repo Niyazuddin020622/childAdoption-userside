@@ -3,7 +3,7 @@ import axios from "axios";
 
 function ContactHistory() {
   const [contacts, setContacts] = useState([]);
-
+const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     const userEmail = user?.email;
@@ -11,7 +11,7 @@ function ContactHistory() {
     if (!userEmail) return;
 
     axios
-      .get("/api/user/fetch")
+      .get(`${API_URL}/api/user/fetch`)
       .then((response) => {
         const userMessages = response.data.filter(
           (contact) => contact.email === userEmail

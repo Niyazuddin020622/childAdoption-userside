@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 
 const Resources = () => {
   const [resources, setResources] = useState([]);
-
+const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
-    fetch("/api/resources")
+    fetch(`${API_URL}/api/resources`)
       .then((res) => res.json())
       .then((data) => setResources(data))
       .catch((error) => console.error("Error fetching resources:", error));

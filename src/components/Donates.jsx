@@ -72,9 +72,9 @@ const Donates = () => {
       paymentStatus: "Completed",
       paymentMethod: "Razorpay",
     };
-
+const API_URL = import.meta.env.VITE_API_URL;
     try {
-      const response = await fetch("/api/donate", {
+      const response = await fetch(`${API_URL}/api/donate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(donationData),

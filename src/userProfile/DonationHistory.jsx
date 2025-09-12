@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const DonationHistory = () => {
   const [donations, setDonations] = useState([]);
   const [loading, setLoading] = useState(true);
-
+const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user?.email) {
@@ -12,7 +12,7 @@ const DonationHistory = () => {
       return;
     }
 
-    fetch(`/api/donations?email=${user.email}`)
+    fetch(`${API_URL}/api/donations?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success && Array.isArray(data.data)) {

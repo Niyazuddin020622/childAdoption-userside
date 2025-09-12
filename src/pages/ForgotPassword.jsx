@@ -11,12 +11,13 @@ const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ text: "", type: "" });
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleSendOTP = async () => {
     setLoading(true);
     setMessage({ text: "", type: "" });
     try {
-      const res = await axios.post("/api/send-otp", { email });
+      const res = await axios.post(`${API_URL}/api/send-otp`, { email });
       setMessage({ text: res.data.message, type: "success" });
       setStep(2);
     } catch (err) {
@@ -33,7 +34,7 @@ const ForgotPassword = () => {
     setLoading(true);
     setMessage({ text: "", type: "" });
     try {
-      const res = await axios.post("/api/verify-otp", { email, otp });
+      const res = await axios.post(`${API_URL}/api/verify-otp`, { email, otp });
       setMessage({ text: res.data.message, type: "success" });
       setStep(3);
     } catch (err) {
@@ -50,7 +51,7 @@ const ForgotPassword = () => {
     setLoading(true);
     setMessage({ text: "", type: "" });
     try {
-      const res = await axios.post("/api/reset-password", {
+      const res = await axios.post(`${API_URL}/api/reset-password`, {
         email,
         newPassword,
       });

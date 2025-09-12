@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
-
-const socket = io("http://localhost:3000");
+const API_URL = import.meta.env.VITE_API_URL;
+const socket = io(`${API_URL}`);
 
 const AdoptionHistory = ({ userId }) => {
   const [adoptionHistory, setAdoptionHistory] = useState([]);
@@ -9,7 +9,7 @@ const AdoptionHistory = ({ userId }) => {
   useEffect(() => {
     const fetchAdoptionHistory = async () => {
       try {
-        const response = await fetch(`/api/history/${userId}`);
+        const response = await fetch(`${API_URL}/api/history/${userId}`);
         if (response.ok) {
           const data = await response.json();
           setAdoptionHistory(data.adoptionHistory);
