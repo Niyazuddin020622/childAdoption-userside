@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./layout/Navbar"; 
+import Navbar from "./layout/Navbar";
 import Footer from "./layout/Footer";
 import Home from "./components/Home"; // ✅ make sure path sahi ho
-import About from "./components/About"
+import About from "./components/About";
 import Contact from "./components/Contact";
 import AvailableChildren from "./components/AvailableChildren ";
 import ChildDetails from "./pages/ChildDetails";
@@ -15,6 +15,8 @@ import Donates from "./components/Donates";
 import Gallery from "./components/Gallery";
 import UserProfile from "./userProfile/UserProfile";
 import AdoptNow from "./pages/AdoptNow";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
@@ -23,19 +25,29 @@ const App = () => {
       <Routes>
         {/* Home Route */}
         <Route path="/" element={<Home />} />
-         <Route path="/about" element={<About />} />
-         <Route path="/contact" element={<Contact />} />
-         <Route path="/children" element={<AvailableChildren />} />
-         <Route path="/child/:id" element={<ChildDetails />} />
-         <Route path="/adopt-now" element={<AdoptNow />} />
-         <Route path="/login" element={<Login />} />
-         <Route path="/register" element={<Register />} />
-         <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/donate" element={<Donates />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/profile" element={<UserProfile />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/children" element={<AvailableChildren />} />
+        <Route path="/child/:id" element={<ChildDetails />} />
+        <Route path="/adopt-now/:id" element={<AdoptNow />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/donate" element={<Donates />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="colored"
+      />
       <Footer />
     </Router>
   );

@@ -1,21 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const { user, logout } = useContext(AuthContext);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isParentOpen, setIsParentOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   const userMenuRef = useRef(null);
-
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    setUser(storedUser);
-  }, []);
 
   // Close user dropdown on outside click
   useEffect(() => {
@@ -31,29 +28,27 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    setUser(null);
+    logout();
     navigate("/login");
   };
 
-const navLinks = [
-  { path: "/", label: "Home" },
-  { path: "/about", label: "About" },
-  { path: "/contact", label: "Contact" },
-  { path: "/children", label: "Children" },
-  { path: "/resources", label: "Resources" },
-  { path: "/donate", label: "Donate" },
-  { path: "/gallery", label: "Gallery" },
-];
+  const navLinks = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About" },
+    { path: "/contact", label: "Contact" },
+    { path: "/children", label: "Children" },
+    { path: "/resources", label: "Resources" },
+    { path: "/donate", label: "Donate" },
+    { path: "/gallery", label: "Gallery" },
+  ];
 
-const parentLinks = [
-  { path: "/stories", label: "Stories" },
-  { path: "/guide", label: "Guide" },
-  { path: "/tips", label: "Tips" },
-  { path: "/support", label: "Support" },
-  { path: "/legal", label: "Legal" },
-];
-
+  const parentLinks = [
+    { path: "/stories", label: "Stories" },
+    { path: "/guide", label: "Guide" },
+    { path: "/tips", label: "Tips" },
+    { path: "/support", label: "Support" },
+    { path: "/legal", label: "Legal" },
+  ];
 
   return (
     <nav className="sticky top-0 z-50 bg-gradient-to-r from-purple-700 via-pink-600 to-red-600 shadow-lg">
@@ -65,9 +60,6 @@ const parentLinks = [
             alt="Logo"
             className="h-12 w-12 rounded-full border-2 border-white shadow-md"
           />
-          <span className="text-white text-lg font-bold tracking-wide">
-            
-          </span>
         </Link>
 
         {/* Desktop Menu */}
