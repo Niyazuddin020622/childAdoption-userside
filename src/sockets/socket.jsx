@@ -1,14 +1,11 @@
 // src/sockets/socket.js
 import { io } from "socket.io-client";
 
-const token = localStorage.getItem("adminToken");
-
-// ✅ Render pe deployed backend URL use karo
-const backendURL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const backendURL = import.meta.env.VITE_API_URL || "https://child-backend.onrender.com";
 
 const socket = io(backendURL, {
-  auth: { token },
-  autoConnect: false, // Optional: connect manually later if needed
+  transports: ["websocket", "polling"],
+  withCredentials: true,
 });
 
 export default socket;

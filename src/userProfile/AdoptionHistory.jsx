@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { io } from "socket.io-client";
+import socket from "../sockets/socket";  // ✅ Reuse same instance
 const API_URL = import.meta.env.VITE_API_URL;
-const socket = io(`${API_URL}`);
+
 
 const AdoptionHistory = ({ userId }) => {
   const [adoptionHistory, setAdoptionHistory] = useState([]);
