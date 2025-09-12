@@ -5,9 +5,9 @@ const ChildDetails = () => {
   const { id } = useParams();
   const [child, setChild] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
-    fetch(`/api/children/${id}`)
+    fetch(`${API_URL}/api/children/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setChild(data);
