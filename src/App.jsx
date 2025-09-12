@@ -14,6 +14,7 @@ import Resources from "./components/Resource";
 import Donates from "./components/Donates";
 import Gallery from "./components/Gallery";
 import UserProfile from "./userProfile/UserProfile";
+import AdoptNow from "./pages/AdoptNow";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
          <Route path="/contact" element={<Contact />} />
          <Route path="/children" element={<AvailableChildren />} />
          <Route path="/child/:id" element={<ChildDetails />} />
+         <Route path="/adopt-now" element={<AdoptNow />} />
          <Route path="/login" element={<Login />} />
          <Route path="/register" element={<Register />} />
          <Route path="/forgot-password" element={<ForgotPassword />} />
